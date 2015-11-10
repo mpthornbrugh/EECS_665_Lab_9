@@ -204,8 +204,15 @@ binop   : ID IEQ ID     { }
                           function_printtemp(function,$1);
                           printf( ", " );
                           printf( "%%eax\n" ); }
-        | ID ISUB ID    { }
-        | ID IMUL ID    { }
+        | ID ISUB ID    { printf( "    movl       " );
+                          function_printtemp(function,$3);
+                          printf( ", %%eax\n" );
+
+                          printf( "    subl       " );
+                          function_printtemp(function,$1);
+                          printf( ", " );
+                          printf( "%%eax\n" ); }
+        | ID IMUL ID    {  }
         | ID IDIV ID    { }
         | ID IMOD ID    { }
         | ID IIDX ID    { }

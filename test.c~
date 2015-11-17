@@ -13,15 +13,13 @@ extern int tstshl(int,int);
 extern int tstshr(int,int);
 
 int main( int argc, const char *argv[] ) {
-	
-	10 * 11;
     
     printf( "10 = %d\n", tstconst() );
     printf( "12 + 6 = %d\n", tstadd(12,6) );
     printf( "12 - 6 = %d\n", tstsub(12,6) );
     printf( "12 * 6 = %d\n", tstmul(12,6) );
     printf( "12 / 6 = %d\n", tstdiv(12,6) );
-    printf( "12 %% 5 = %d\n", tstmod(12,4) );
+    printf( "12 %% 5 = %d\n", tstmod(12,5) );
     printf( "12 << 1 = %d\n", tstshl(12,1) );
     printf( "12 >> 1 = %d\n", tstshr(12,1) );
 

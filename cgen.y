@@ -233,22 +233,19 @@ binop   : ID IEQ ID     { }
 
                           printf( "    idiv       " );
                           printf( "%%ebx\n\n" ); }
-        | ID IMOD ID    { printf( "    subl       " );
-			  printf( "%%edx, %%edx\n" );
+        | ID IMOD ID    { printf( "    movl       $0" );
+									printf( ", %%edx\n" );
 
-			  printf( "    movl       " );
-                          function_printtemp(function,$3);
-                          printf( ", %%eax\n" );
+									printf( "    movl       " );
+									function_printtemp(function,$3);
+									printf( ", %%eax\n" );
 
-			  printf( "    movl       " );
-                          function_printtemp(function,$1);
-                          printf( ", %%ebx\n" );
+									printf( "    idiv       " );
+									function_printtemp(function,$1);
+									printf( ", %%eax\n\n" );
 
-                          printf( "    idiv       " );
-                          printf( "%%ebx\n\n" );
-
-			  printf( "    movl       " );
-			  printf( "%%edx, %%eax\n" ); }
+									printf( "    movl       " );
+									printf( "%%edx, %%eax\n" ); }
         | ID IIDX ID    { }
         | ID FEQ ID     { }
         | ID FNE ID     { }

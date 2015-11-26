@@ -201,7 +201,7 @@ binop   : ID IEQ ID     { }
 
                           printf( "    movl       " );
                           function_printtemp(function,$1);
-                          printf(", %%cl");
+                          printf(", %%cl\n");
 
                           printf( "    shr        %%eax, %%cl" ); }
         | ID IADD ID    { printf( "    movl       " );

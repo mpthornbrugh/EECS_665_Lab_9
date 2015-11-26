@@ -6,7 +6,5 @@ int main () {
 	int z = x << y;
 	int a = x >> y;
 
-	std::cout << z << a << std::endl;
-
 	return 0;
 }

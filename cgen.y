@@ -195,7 +195,12 @@ binop   : ID IEQ ID     { }
         | ID IOR ID     { }
         | ID IXOR ID    { }
         | ID ISHL ID    { }
-        | ID ISHR ID    { }
+        | ID ISHR ID    { printf( "    movl       " );
+                          function_printtemp(function,$3);
+                          printf( ", %%eax\n" );
+
+                          printf( "    shr       %%eax,1\n" );
+                           }
         | ID IADD ID    { printf( "    movl       " );
                           function_printtemp(function,$3);
                           printf( ", %%eax\n" );
@@ -221,31 +226,31 @@ binop   : ID IEQ ID     { }
                           printf( ", " );
                           printf( "%%eax\n\n" ); }
         | ID IDIV ID    { printf( "    subl       " );
-			  printf( "%%edx, %%edx\n" );
+			                    printf( "%%edx, %%edx\n" );
 
-			  printf( "    movl       " );
+			                    printf( "    movl       " );
                           function_printtemp(function,$3);
                           printf( ", %%eax\n" );
 
-			  printf( "    movl       " );
+			                    printf( "    movl       " );
                           function_printtemp(function,$1);
                           printf( ", %%ebx\n" );
 
                           printf( "    idiv       " );
                           printf( "%%ebx\n\n" ); }
         | ID IMOD ID    { printf( "    movl       $0" );
-									printf( ", %%edx\n" );
+        									printf( ", %%edx\n" );
 
-									printf( "    movl       " );
-									function_printtemp(function,$3);
-									printf( ", %%eax\n" );
+        									printf( "    movl       " );
+        									function_printtemp(function,$3);
+        									printf( ", %%eax\n" );
 
-									printf( "    idiv       " );
-									function_printtemp(function,$1);
-									printf( ", %%eax\n\n" );
+        									printf( "    idiv       " );
+        									function_printtemp(function,$1);
+        									printf( ", %%eax\n\n" );
 
-									printf( "    movl       " );
-									printf( "%%edx, %%eax\n" ); }
+        									printf( "    movl       " );
+        									printf( "%%edx, %%eax\n" ); }
         | ID IIDX ID    { }
         | ID FEQ ID     { }
         | ID FNE ID     { }

@@ -6,5 +6,5 @@ int main () {
 	int z = x << y;
 	int a = x >> y;
 
-	return 0;
+	return z;
 }

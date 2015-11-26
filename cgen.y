@@ -194,16 +194,24 @@ binop   : ID IEQ ID     { }
         | ID IAND ID    { }
         | ID IOR ID     { }
         | ID IXOR ID    { }
-        | ID ISHL ID    { }
+        | ID ISHL ID    { printf( "    movl       " );
+                          function_printtemp(function,$3);
+                          printf( ", %%eax\n" );
+
+                          printf( "    movl       " );
+                          function_printtemp(function,$1);
+                          printf(", %%ecx\n");
+
+                          printf( "    sall        %%cl, %%eax\n" ); }
         | ID ISHR ID    { printf( "    movl       " );
                           function_printtemp(function,$3);
                           printf( ", %%eax\n" );
 
-                          printf( "    mov       " );
+                          printf( "    movl       " );
                           function_printtemp(function,$1);
-                          printf(", %%cl\n");
+                          printf(", %%ecx\n");
 
-                          printf( "    shr        %%eax, %%cl\n" ); }
+                          printf( "    sarl        %%cl, %%eax\n" ); }
         | ID IADD ID    { printf( "    movl       " );
                           function_printtemp(function,$3);
                           printf( ", %%eax\n" );

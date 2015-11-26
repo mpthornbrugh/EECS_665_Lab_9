@@ -165,7 +165,7 @@ unop    : ISUB ID       { }
         | IRET ID       { printf( "    movl       " );
                           function_printtemp(function,$2);
                           printf( ", %%eax\n" );
-                          printf( "leave\nret\n" ); }
+                          printf( "    leave\n    ret\n" ); }
         | ICONV ID      { }
         | FSUB ID       { }
         | FDEREF ID     { }

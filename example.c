@@ -1,3 +1,7 @@
+void foo (int x, int y) {
+	return x + y;
+}
+
 int main () {
 
 	int x = 12;
@@ -6,5 +10,5 @@ int main () {
 	int z = x << y;
 	int a = x >> y;
 
-	return z;
+	return foo(x,y);
 }

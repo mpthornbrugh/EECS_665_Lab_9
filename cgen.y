@@ -158,10 +158,17 @@ ops     : /* empty rule */        { $$ = NULL; }
 unop    : ISUB ID       { }
         | IINV ID       { }
         | IDEREF ID     { }
-        | IARG ID       { }
-        | ICALL ID INT  { /* printf( "calling " );
-                          function_labeltemp(function,$2);
-                          printf( " with %lld arguments\n", $3); */ }
+        | IARG ID       { printf( "    pushl       " );
+        						  function_printtemp(function, $2);
+        						  printf( "\n" );}
+        | ICALL ID INT  { printf( "    call       " );
+        						  function_labeltemp(function, $2);
+        						  printf( "\n" );
+        						  int i = 0;
+        						  int numArgs = $3;
+        						  for (i; i < numArgs; i++) {
+        						  		printf( "    pop        %%ebp\n" );
+        						  } }
         | IRET ID       { printf( "    movl       " );
                           function_printtemp(function,$2);
                           printf( ", %%eax\n" ); }

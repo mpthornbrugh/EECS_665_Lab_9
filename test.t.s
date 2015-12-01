@@ -15,6 +15,13 @@ tstcall:
     push       %ebp
     movl       %esp, %ebp
     subl       $256, %esp
+    pushl       $10
+    pushl       $100
+    pushl       $strval0
+    call       printf
+    pop        %ebp
+    pop        %ebp
+    pop        %ebp
     movl       $10, %eax
     addl       $256, %esp
     pop        %ebp
@@ -110,6 +117,9 @@ tstshl:
     push       %ebp
     movl       %esp, %ebp
     subl       $256, %esp
+    movl       264(%esp), %eax
+    movl       268(%esp), %ecx
+    sall        %cl, %eax
     movl       %eax, 272(%esp)
     movl       272(%esp), %eax
     addl       $256, %esp
@@ -122,6 +132,9 @@ tstshr:
     push       %ebp
     movl       %esp, %ebp
     subl       $256, %esp
+    movl       264(%esp), %eax
+    movl       268(%esp), %ecx
+    sarl        %cl, %eax
     movl       %eax, 272(%esp)
     movl       272(%esp), %eax
     addl       $256, %esp
